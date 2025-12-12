@@ -1,14 +1,301 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV Octavio</title>
+    <title>Portafolio | Octavio Manque</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    
+    <style>
+        :root {
+            --accent-color: #ff69b4; /* Sakura Pink */
+            --bg-dark: #121212;
+            --card-bg: #1a1a1a;
+            --text-secondary: #b0b0b0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-dark); 
+            color: #e0e0e0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 15px;
+        }
+
+        /* Contenedor Principal */
+        .main-portfolio-card {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+            overflow: hidden;
+            max-width: 1200px;
+            width: 100%;
+            border: 1px solid #333;
+        }
+
+        /* --- COLUMNA IZQUIERDA (Perfil) --- */
+        .left-photo-card {
+            background-color: #222;
+            padding: 0;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 2;
+        }
+
+        .photo-wrapper {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .photo-wrapper::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to top, #222, transparent);
+        }
+
+        .photo-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            filter: brightness(0.8) contrast(1.1);
+        }
+
+        .profile-details {
+            padding: 2rem;
+        }
+
+        .my-name {
+            font-weight: 700;
+            color: white;
+            margin-bottom: 5px;
+            font-size: 2rem;
+        }
+        
+        .my-role {
+            color: var(--accent-color);
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            text-align: left;
+            padding: 0 15px;
+        }
+
+        .contact-info i {
+            color: var(--accent-color);
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .btn-sakura {
+            background-color: var(--accent-color);
+            color: #fff;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .btn-sakura:hover {
+            background-color: #ff8ec6;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+            color: white;
+        }
+
+        /* --- COLUMNA DERECHA (Contenido) --- */
+        .right-content-area {
+            padding: 50px;
+        }
+
+        .section-title {
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            color: white;
+            display: flex;
+            align-items: center;
+            font-size: 1.4rem;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 15px;
+        }
+
+        .highlight-text { color: var(--accent-color); }
+        
+        .text-body-custom {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        /* Tarjeta de Proyecto */
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 105, 180, 0.2);
+            transition: 0.3s;
+        }
+        
+        .project-card:hover {
+            border-color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .project-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Barras de Progreso */
+        .skill-item { margin-bottom: 20px; }
+        
+        .progress {
+            height: 6px;
+            background-color: #333;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            background-color: var(--accent-color);
+            border-radius: 10px;
+        }
+        
+        .skill-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        @media (max-width: 991px) {
+            .photo-wrapper { height: 250px; }
+            .right-content-area { padding: 30px; }
+        }
+    </style>
 </head>
 <body>
-    <div>
-        <h1>Curriculum Vitae - Octavio</h1>
-        <p>Esta es una prueba</p>
+
+    <div class="main-portfolio-card">
+        <div class="row g-0">
+            
+            <div class="col-lg-4 left-photo-card">
+                <div class="photo-wrapper">
+                    <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=755&q=80" alt="Foto Perfil">
+                </div>
+                
+                <div class="profile-details">
+                    <h1 class="my-name">Octavio Manque</h1>
+                    <p class="my-role">Full-Stack Developer</p>
+                    
+                    <div class="contact-info mt-4">
+                        <div class="mb-2"><i class="bi bi-envelope"></i> dmanque81@gmail.com</div>
+                        <div class="mb-2"><i class="bi bi-telephone"></i> +569 40259498</div>
+                        <div class="mb-2"><i class="bi bi-geo-alt"></i> Lanco, Chile</div>
+                        <div class="mb-2"><i class="bi bi-book"></i> Estudiante INACAP</div>
+                    </div>
+
+                    <div class="mt-4">
+                        <a href="https://wa.me/56940259498" target="_blank" class="btn-sakura">
+                            <i class="bi bi-whatsapp me-2"></i> Contáctame
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8 right-content-area">
+                
+                <h2 class="section-title">Sobre Mí</h2>
+                <p class="text-body-custom">
+                    Hola soy Octavio y actualmente soy estuadiante de ingenieria en informatica en inacap valdivia, estoy 
+                </p>
+
+                <h2 class="section-title">Proyecto Destacado</h2>
+                <div class="project-card">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h4 class="text-white mb-1">Surmonter E-commerce</h4>
+                            <p class="text-secondary small mb-2">Fundador & Lead Developer | 1 Año en línea</p>
+                        </div>
+                        <a href="https://surmontertienda.cl" target="_blank" class="project-link"><i class="bi bi-box-arrow-up-right"></i> Visitar</a>
+                    </div>
+                    <p class="text-body-custom mb-2 mt-2" style="font-size: 0.9rem;">
+                        Plataforma de comercio electrónico completamente funcional desarrollada y administrada personalmente.
+                    </p>
+                    <div class="d-flex gap-2 flex-wrap">
+                        <span class="badge bg-dark border border-secondary">Django</span>
+                        <span class="badge bg-dark border border-secondary">Python</span>
+                        <span class="badge bg-dark border border-secondary">AWS</span>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <h2 class="section-title">Tech Stack</h2>
+                        
+                        <div class="skill-item">
+                            <div class="skill-label"><span>HTML5 / CSS3</span> <span>Avanzado</span></div>
+                            <div class="progress"><div class="progress-bar" style="width: 85%"></div></div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-label"><span>Python (Django)</span> <span>Intermedio-Alto</span></div>
+                            <div class="progress"><div class="progress-bar" style="width: 75%"></div></div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-label"><span>JavaScript</span> <span>Intermedio</span></div>
+                            <div class="progress"><div class="progress-bar" style="width: 60%"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h2 class="section-title">Habilidades</h2>
+                        <ul class="list-unstyled text-body-custom">
+                            <li class="mb-2"><i class="bi bi-check2-circle text-success me-2"></i>Soporte Técnico Hardware/Software</li>
+                            <li class="mb-2"><i class="bi bi-check2-circle text-success me-2"></i>Gestión de Hosting & VPS</li>
+                            <li class="mb-2"><i class="bi bi-check2-circle text-success me-2"></i>Atención al Cliente</li>
+                            <li class="mb-2"><i class="bi bi-check2-circle text-success me-2"></i>Trabajo en Equipo Ágil</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
